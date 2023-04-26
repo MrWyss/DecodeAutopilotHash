@@ -1,0 +1,8 @@
+# Flask specific
+__pycache__/
+*.pyc
+
+# Dependency directories
+venv/
+env/
+env-bak/

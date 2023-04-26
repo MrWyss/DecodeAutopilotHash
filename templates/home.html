@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Autopilot Hash Converter</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <h1>Autopilot Hash Converter</h1>
+  
+  <p>Converts Autopilot Hash to readable format</p>
+  <br>
+  <details>
+    <summary>Get your own hash</summary>
+    <span>
+      <p>Copy and paste this code it into a <strong>elevated</strong> PowerShell to get your own hardware hash 😜</p>
+      <br>
+      <p>
+        <input type="text" id="POSHCommand" value="(Get-CimInstance -Namespace root/cimv2/mdm/dmmap -Class MDM_DevDetail_Ext01 -Filter &quot;InstanceID=&#39;Ext&#39; AND ParentID=&#39;./DevDetail&#39;&quot;).DeviceHardwareData | clip"> 
+        <button onclick="copyPoshCommand()">copy</button>
+      </p>
+    </span>
+  </details>
+  <br>  
+  <form action="/" method="post">
+    <label for="hash">Enter Autopilot Hash:</label><br>
+    <textarea id="hash" name="hash" rows="10" cols="50"></textarea><br>
+    <input type="submit" value="Convert">
+  </form>
+  <br>
+  {% if result %}
+  <h2>Converted Result:</h2>
+  <input type="text" id="searchinTable" onkeyup="searchinTable()" placeholder="Search for fields...">
+  <table id="decodedtable">
+    {% for item in result %}
+    {% for key, value in item.items() %}
+    <tr>
+      <td>{{ key }}</td>
+      <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+  </table>
+  {% endif %}
+  <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% include 'footer.html' %}
+</body>
+
+</html>

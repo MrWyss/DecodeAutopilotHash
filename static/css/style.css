@@ -1,0 +1,122 @@
+body {
+  background-color: #333333;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+h1 {
+  color: #45a049;
+}
+footer p {
+  display: inline-block;
+}
+
+textarea {
+  width: 98.5%;
+  height: 300px;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+input[type=submit], button {
+  background-color: #45a049;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #4CAF50;
+}
+
+summary {
+  color: #45a049;
+  cursor: pointer;
+}
+
+summary:hover {
+  background-color: #4CAF50;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 99.9%;
+  margin: 20px 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  word-break: break-all;
+  
+}
+
+th {
+  background-color: #4CAF50;
+  color: #000000;
+}
+
+tr:nth-child(even) {
+  background-color: #4CAF50;
+}
+
+tr:nth-child(odd) {
+  background-color: #45a049;
+}
+
+footer {
+  font-size: 14px;
+  text-align: center;
+}
+
+footer p {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Unvisited link */
+footer a:link {
+  color:#45a049;
+}
+
+/* Visited link */
+footer a:visited {
+  color: #45a049;
+}
+
+/* Mouse over link */
+footer a:hover {
+  color: #4CAF50;
+}
+
+/* Selected link */
+footer a:active {
+  color: #fff;
+}
+
+#POSHCommand {
+ font-size: 16px;
+ height: 20px;
+ width: 92.6%;
+ border-radius: 5px;
+ padding: 10px;
+ border: none;
+ margin-bottom: 20px;
+}
+
+#searchinTable {
+  background-image: url('/static/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 30%;
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}

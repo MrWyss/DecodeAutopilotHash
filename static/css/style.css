@@ -14,7 +14,7 @@ footer p {
 textarea {
   width: 98.5%;
   height: 300px;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 5px;
   padding: 10px;
   border: none;
@@ -98,6 +98,15 @@ footer a:hover {
 /* Selected link */
 footer a:active {
   color: #fff;
+}
+
+#quote {
+  font-weight: bold;
+  font-style: italic;
+}
+
+[class*="span"].pull-right,.row-fluid [class*="span"].pull-right {
+  float: right
 }
 
 #POSHCommand {

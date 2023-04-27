@@ -12,8 +12,8 @@
   <details>
     <summary>Get your own hash</summary>
     <span>
-      <p>Copy and paste this code it into a <strong>elevated</strong> PowerShell to get your own hardware hash 😜</p>
       <p>
+        <label for="POSHCommand">Copy and paste this code it into a <strong>elevated</strong> PowerShell to get your own hardware hash 😜:</label>
         <input type="text" id="POSHCommand" value="(Get-CimInstance -Namespace root/cimv2/mdm/dmmap -Class MDM_DevDetail_Ext01 -Filter &quot;InstanceID=&#39;Ext&#39; AND ParentID=&#39;./DevDetail&#39;&quot;).DeviceHardwareData | clip"> 
         <button onclick="copyPoshCommand()">Copy</button>
       </p>

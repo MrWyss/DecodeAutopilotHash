@@ -28,7 +28,7 @@ def convert_from_autopilot_hash(CSVFile=None, Hash=None):
     elif Hash:
         hashes = [Hash]
     else:
-        results.append({"Hash": "?", "Error": "Hash must be provided"})
+        results.append({"Error": "Hash must be provided","Hash": "?"})
         return results
 
     value_type_utf8string = {
@@ -67,13 +67,13 @@ def convert_from_autopilot_hash(CSVFile=None, Hash=None):
         try:
             binary = base64.b64decode(h)
         except binascii.Error:
-            results.append({"Hash": h, "Error": "Invalid hash"})
+            results.append({"Error": "Invalid hash","Hash": h})
             return results
 
 
         # Validate the header
         if binary[0] != 79 or binary[1] != 65:
-            results.append({"Hash": h, "Error": "Invalid hash header"})
+            results.append({"Error": "Invalid hash header", "Hash": h})
             return results
 
         # Validate the checksum

@@ -3,7 +3,7 @@ from utils.autopilotutility import convert_from_autopilot_hash
 
 app = Flask(__name__)
 
-version = 'v1.0.2'
+version = 'v1.0.4'
 
 @app.route('/', methods=['GET', 'POST'])
 def home():

@@ -6,3 +6,7 @@ __pycache__/
 venv/
 env/
 env-bak/
+
+# local development
+_nocommit/
+

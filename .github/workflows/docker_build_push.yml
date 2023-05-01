@@ -57,6 +57,13 @@ jobs:
             ${{ IMAGE_LATEST }}
             ${{ IMAGE_VERSION }}
           platforms: linux/arm64,linux/arm/v7,linux/amd64
+          labels: |
+            org.opencontainers.image.title=${{ env.IMAGE_NAME }}
+            org.opencontainers.image.description=GitHub Action for building and pushing Docker images
+            org.opencontainers.image.url=https://${{ IMAGE_VERSION }}
+            org.opencontainers.image.version=${{ inputs.tag }}
+            org.opencontainers.image.created=${{ github.event.repository.pushed_at }}
+            org.opencontainers.image.revision=${{ github.sha }}
 
       - name: Set output Image Latest
         id: image_latest

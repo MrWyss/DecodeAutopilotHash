@@ -16,6 +16,9 @@ jobs:
     permissions:
       contents: read
       packages: write
+    outputs:
+      image_latest: ${{ steps.image_latest.outputs.IMAGE_LATEST }}
+      image_version: ${{ steps.image_version.outputs.IMAGE_VERSION }}
 
     steps:
       - name: Checkout repository
@@ -23,6 +26,14 @@ jobs:
         
       - name: Downcase IMAGE_NAME
         run: echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+      
+      - name: Set Image Tag Latest
+        id: image_tag_latest
+        run: echo "IMAGE_LATEST=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest >>${GITHUB_ENV}
+      
+      - name: Set Image Tag Version
+        id: image_tag_version
+        run: echo "IMAGE_VERSION=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ inputs.tag }} >>${GITHUB_ENV}
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -43,6 +54,16 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ inputs.tag }}
+            ${{ IMAGE_LATEST }}
+            ${{ IMAGE_VERSION }}
           platforms: linux/arm64,linux/arm/v7,linux/amd64
+
+      - name: Set output Image Latest
+        id: image_latest
+        run: |
+          echo "IMAGE_LATEST=${{ IMAGE_LATEST }}" >> $GITHUB_OUTPUT
+
+      - name: Set output Image Version
+        id: image_version
+        run: |
+          echo "IMAGE_VERSION=${{ IMAGE_VERSION }}" >> $GITHUB_OUTPUT

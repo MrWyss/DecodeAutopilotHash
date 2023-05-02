@@ -16,9 +16,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-    outputs:
-      image_latest: ${{ steps.image_latest.outputs.IMAGE_LATEST }}
-      image_version: ${{ steps.image_version.outputs.IMAGE_VERSION }}
 
     steps:
       - name: Checkout repository
@@ -57,18 +54,16 @@ jobs:
           platforms: linux/arm64,linux/arm/v7,linux/amd64
           labels: |
             org.opencontainers.image.title=${{ env.IMAGE_NAME }}
-            org.opencontainers.image.description=GitHub Action for building and pushing Docker images
+            org.opencontainers.image.description=${{ github.event.repository.description }}
             org.opencontainers.image.url=https://${{ env.IMAGE_VERSION }}
+            org.opencontainers.image.source=https://${{ env.GITHUB_REPOSITORY }}
             org.opencontainers.image.version=${{ inputs.tag }}
             org.opencontainers.image.created=${{ github.event.repository.pushed_at }}
             org.opencontainers.image.revision=${{ github.sha }}
 
-      - name: Set output Image Latest
-        id: image_latest
+      - name: Creating Summary
         run: |
-          echo "IMAGE_LATEST=${{ env.IMAGE_LATEST }}" >> $GITHUB_OUTPUT
-
-      - name: Set output Image Version
-        id: image_version
-        run: |
-          echo "IMAGE_VERSION=${{ env.IMAGE_VERSION }}" >> $GITHUB_OUTPUT
+          echo "## Release Images 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+          echo "- Latest:  ${{ env.IMAGE_LATEST }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Version: ${{ env.IMAGE_VERSION }}" >> $GITHUB_STEP_SUMMARY

@@ -11,14 +11,12 @@
   <h1>Autopilot Hash Converter</h1>
   <p id="quote">Converts Autopilot Hash to readable format</p>
   <details>
-    <summary>Get your own hash</summary>
-    <span>
+    <summary><span>Get your own hash</span></summary>
       <p>
         <label for="POSHCommand">Copy and paste this code it into a <strong>elevated</strong> PowerShell to get your own hardware hash 😜:</label>
         <input type="text" id="POSHCommand" value="(Get-CimInstance -Namespace root/cimv2/mdm/dmmap -Class MDM_DevDetail_Ext01 -Filter &quot;InstanceID=&#39;Ext&#39; AND ParentID=&#39;./DevDetail&#39;&quot;).DeviceHardwareData | clip"> 
-        <button onclick="copyPoshCommand()">Copy</button>
+        <br><button onclick="copyPoshCommand()">Copy</button>
       </p>
-    </span>
   </details>
   <br>  
   <form action="/" method="post">

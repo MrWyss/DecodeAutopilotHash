@@ -23,6 +23,7 @@ textarea {
 
 input[type=submit], button {
   background-color: #45a049;
+  font-weight: bold;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -30,19 +31,42 @@ input[type=submit], button {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
-  background-color: #4CAF50;
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: black;
 }
 
+::selection {
+  color: white;
+  background: black;
+}
+
+input[type=submit]:hover, button:hover {
+  background-color: #95d097;
+}
+
+#POSHCommand {
+  font-size: 16px;
+  height: 20px;
+  width: 98.5%;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  margin-bottom: 20px;
+ }
+
 summary {
-  color: #45a049;
   cursor: pointer;
 }
 
-summary:hover {
-  background-color: #4CAF50;
+summary span {
+  color: #45a049;
 }
 
+summary span:hover {
+  color: #95d097;
+  /* background-color: #45a049;*/
+}
 
 table {
   border-collapse: collapse;
@@ -92,7 +116,8 @@ footer a:visited {
 
 /* Mouse over link */
 footer a:hover {
-  color: #4CAF50;
+  color: #95d097;
+
 }
 
 /* Selected link */
@@ -103,20 +128,6 @@ footer a:active {
 #quote {
   font-weight: bold;
   font-style: italic;
-}
-
-[class*="span"].pull-right,.row-fluid [class*="span"].pull-right {
-  float: right
-}
-
-#POSHCommand {
- font-size: 16px;
- height: 20px;
- width: 92.6%;
- border-radius: 5px;
- padding: 10px;
- border: none;
- margin-bottom: 20px;
 }
 
 #searchinTable {

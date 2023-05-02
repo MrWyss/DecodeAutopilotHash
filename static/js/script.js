@@ -24,7 +24,7 @@ function copyPoshCommand() {
   var copyText = document.getElementById("POSHCommand");
   // Select the text field
   copyText.select();
-  copyText.setSelectionRange(0, 99999)
+  copyText.setSelectionRange(0, 99999);
   // Copy the text to the clipboard
   navigator.clipboard.writeText(copyText.value)
     .then(() => {
@@ -34,10 +34,11 @@ function copyPoshCommand() {
       setTimeout(function() {
         poshElement.style.transition = "background-color 500ms linear";
         poshElement.style.backgroundColor = "";
-      }, 1000);
+      }, 350);
+      // Deselect the text field
+      copyText.blur();
     })
     .catch(err => {
       console.error('Failed to copy text: ', err);
     });
 }
-
